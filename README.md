@@ -33,6 +33,15 @@ git clone https://github.com/AliRodja/Dartoyono.git
 cd Dartoyono
 ```
 
+### 2. Masuk ke branch dan pull
+
+Masuk ke branch yang sudah dibuat dan pull:
+
+```bash
+git checkout feat/login
+git pull origin feat/login
+```
+
 ## Aturan Commit
 
 -   Gunakan prefix `feat:` jika ada fitur baru, contoh: `feat: Halaman login User`
