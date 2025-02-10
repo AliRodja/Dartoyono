@@ -14,7 +14,7 @@ class App {
         //     $this->controller = $url[0];
         //     unset($url[0]);
         // }
-        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')) {
+        if (isset($url[0]) && file_exists('../app/controller/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
@@ -37,7 +37,6 @@ class App {
             $this->params = array_values($url);
             
         }
-
 
         //Jalankan controller dan method, serta kirimkan params jika ada
         call_user_func_array([$this->controller, $this->method], $this->params);
