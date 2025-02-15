@@ -1,6 +1,6 @@
-# Dartoyono
+# Dartoyo
 
-**Dartoyono** adalah sebuah platform daring yang berfokus pada segala hal tentang kopi. Website ini dibangun menggunakan PHP murni dan menyajikan berbagai konten menarik seputar dunia kopi, termasuk berita terbaru, ulasan kopi, dan interaksi komunitas.
+**Dartoyo** adalah sebuah platform daring yang berfokus pada segala hal tentang kopi. Website ini dibangun menggunakan PHP murni dan menyajikan berbagai konten menarik seputar dunia kopi, termasuk berita terbaru, ulasan kopi, dan interaksi komunitas.
 
 ## Fitur
 
@@ -22,7 +22,7 @@ Pastikan Anda telah menginstal prasyarat berikut:
 
 ## Instalasi
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek **Dartoyono** di lingkungan lokal Anda.
+Ikuti langkah-langkah berikut untuk menjalankan proyek **Dartoyo** di lingkungan lokal Anda.
 
 ### 1. Clone Repository
 
@@ -30,7 +30,7 @@ Clone repository ini ke direktori lokal Anda:
 
 ```bash
 git clone https://github.com/AliRodja/Dartoyono.git
-cd Dartoyono
+cd Dartoyo
 ```
 
 ### 2. Masuk ke branch dan pull
@@ -51,4 +51,4 @@ git pull origin feat/login
 
 ---
 
-**Dartoyono** - Platform daring yang berfokus pada segala hal tentang kopi.
+**Dartoyo** - Platform daring yang berfokus pada segala hal tentang kopi.
