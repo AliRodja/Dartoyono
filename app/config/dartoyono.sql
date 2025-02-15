@@ -93,7 +93,7 @@ CREATE TABLE `users` (
   `gender` enum('M','F') NOT NULL,
   `profile_photo` varchar(255) DEFAULT NULL,
   `role_id` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
