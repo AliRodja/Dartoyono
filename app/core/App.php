@@ -1,56 +1,41 @@
 <?php
-
 class App {
-    protected $controller = 'Home';
-    protected $method = 'index';
-    protected $params = [];
+    protected $router;
 
-    public function __construct()
-    {
-        $url = $this->parseURL();
+    public function __construct() {
+        // Inisialisasi router
+        $this->router = new Router();
 
-        //Controller
-        // if(file_exists('../app/controllers/'. $url[0]. '.php')){
-        //     $this->controller = $url[0];
-        //     unset($url[0]);
-        // }
-        if (isset($url[0]) && file_exists('../app/controller/' . $url[0] . '.php')) {
-            $this->controller = $url[0];
-            unset($url[0]);
-        }
+        // Tambahkan route
+        $this->addRoutes();
 
-        require_once '../app/controllers/'. $this->controller . '.php';
-        $this->controller = new $this->controller;
-
-        //Method
-        if (isset($url[1])){
-            if(method_exists($this->controller, $url[1])){
-                $this->method = $url[1];
-                unset($url[1]);
-            
-            }
-        }
-
-        //Parameter
-        if (!empty ($url)) {
-            
-            $this->params = array_values($url);
-            
-        }
-
-        //Jalankan controller dan method, serta kirimkan params jika ada
-        call_user_func_array([$this->controller, $this->method], $this->params);
-
+        // Jalankan router
+        $this->router->dispatch();
     }
 
-    public function parseURL (){
-        if(isset($_GET['url'])){
-            $url = rtrim($_GET ['url'],'/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            return $url;
-        }
+    // Route
+    protected function addRoutes() {
+        // Auth Routes (tanpa middleware)
+        $this->router->addRoute('GET', '/login', 'AuthController', 'login'); // Form login
+        $this->router->addRoute('POST', '/login', 'AuthController', 'login'); // Proses login
+        $this->router->addRoute('GET', '/register', 'AuthController', 'register'); // Form register
+        $this->router->addRoute('POST', '/register', 'AuthController', 'register'); // Proses register
+        $this->router->addRoute('GET', '/logout', 'AuthController', 'logout'); // Logout
+    
+        $this->router->addRoute('GET', '/profile/{id}', 'UserController', 'showProfile', ['auth']);
+        $this->router->addRoute('POST', '/update_profile/{id}', 'UserController', 'updateProfile', ['auth']);
+    
+        // Post Routes (Harus Login)
+        $this->router->addRoute('GET', '/dashboard', 'DashboardController', 'index', ['auth']);
+        $this->router->addRoute('GET', '/create_post', 'PostController', 'showCreateForm', ['auth']);
+        $this->router->addRoute('POST', '/create_post', 'PostController', 'create', ['auth']);
+        $this->router->addRoute('GET', '/edit_post/{id}', 'PostController', 'editPost', ['auth']);
+        $this->router->addRoute('POST', '/update_post/{id}', 'PostController', 'updatePost', ['auth']);
+        $this->router->addRoute('GET', '/delete_post/{id}', 'PostController', 'deletePost', ['auth']);
+    
+        // Public Routes (Tanpa Middleware)
+        $this->router->addRoute('GET', '/', 'HomeController', 'index'); // Halaman utama (tanpa login)
+        $this->router->addRoute('GET', '/view_post/{id}', 'HomeController', 'show'); // Lihat post tanpa login
     }
 }
-
 ?>
