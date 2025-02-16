@@ -3,41 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Custom CSS -->
+    <title>Register</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            background: url('https://source.unsplash.com/1600x900/?coffee,cafe') no-repeat center center/cover;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             overflow: hidden;
         }
-        .card {
-            margin-top: 30px;
-            border-radius: 15px;
-            background: #4b3621;
-            color: white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            max-width: 450px;
-            width: 90%;
+
+        .register-form {
+            flex: 1;
+            padding: 40px;
         }
-        .form-control, .form-select {
-            border-radius: 10px;
-            background: #d2b48c;
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            color: #fff;
             border: none;
-            color: #4b3621;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .form-control::placeholder {
-            color: #6b4226;
-        }
+
         .btn-custom {
             background: #6f4e37;
             color: white;
@@ -46,81 +92,117 @@
             transition: 0.3s;
             border: none;
         }
+
         .btn-custom:hover {
             background: #5a3c2e;
             transform: scale(1.05);
         }
-        .form-label i {
-            margin-right: 5px;
-            color: #c49a6c;
+
+        .social-login {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
         }
-        .card-header {
-            background: transparent;
+
+        .illustration {
+            flex: 1;
+            background-color: #c49a6c;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
             text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: #f4e1c6;
-            padding: 10px 0;
         }
-        .input-group-text {
-            background: #6f4e37;
-            color: white;
-            border: none;
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
-        a {
-            color: #c49a6c;
+
+        .illustration-text {
+            text-align: center;
         }
-        a:hover {
-            color: #f4e1c6;
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .illustration {
+                display: none;
+            }
+
+            .register-form {
+                padding: 20px;
+            }
         }
+
+        @media (max-width: 480px) {
+            .register-form {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .options a {
+                margin-top: 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card shadow-lg p-3 text-center">
-            <div class="card-header">
-                <i class="fas fa-user-plus"></i>Register
+    <div class="container">
+        <div class="register-form">
+            <div class="logo">
+                <img src="img/dartoyo_logo.png" alt="Logo">
             </div>
-            <div class="card-body">
-                <form method="POST" action="/register">
-                    <div class="mb-2 text-start">
-                        <label class="form-label"><i class="fas fa-user"></i> Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="e.g., johndoe123" required>
-                    </div>
-                    <div class="mb-2 text-start">
-                        <label class="form-label"><i class="fas fa-id-card"></i> Full Name</label>
-                        <input type="text" name="full_name" class="form-control" placeholder="e.g., John Doe" required>
-                    </div>
-                    <div class="mb-2 text-start">
-                        <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="e.g., johndoe@example.com" required>
-                    </div>
-                    <div class="mb-2 text-start">
-                        <label class="form-label"><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
-                    </div>
-                    <div class="mb-2 text-start">
-                        <label class="form-label"><i class="fas fa-calendar-alt"></i> Birth Date</label>
-                        <input type="date" name="birth_date" class="form-control" required>
-                    </div>
-                    <div class="mb-2 text-start">
-                        <label class="form-label"><i class="fas fa-venus-mars"></i> Gender</label>
-                        <select name="gender" class="form-select">
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                        </select>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-custom"><i class="fas fa-user-plus"></i> Register</button>
-                    </div>
-                    <div class="text-center mt-2">
-                        <p>Already have an account? <a href="/login">Login here</a></p>
-                    </div>
-                </form>
+            <h2>Create an Account</h2>
+            <p>If you already have an account, you can <a href="/login">Login here</a></p>
+            <form method="POST" action="/register">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="johndoe123" required>
+                
+                <label for="full_name">Full Name</label>
+                <input type="text" name="full_name" placeholder="John Doe" required>
+                
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="johndoe@example.com" required>
+                
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+                
+                <label for="birth_date">Birth Date</label>
+                <input type="date" name="birth_date" required>
+                
+                <label for="gender">Gender</label>
+                <select name="gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                
+                <button class="btn-custom" type="submit">Register</button>
+            </form>
+        </div>
+        <div class="illustration">
+            <img src="https://source.unsplash.com/1600x900/?coffee,cafe" alt="Illustration">
+            <div class="illustration-text">
+                <h2>Join Us Now</h2>
+                <p>Be part of our community and enjoy the benefits</p>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>
