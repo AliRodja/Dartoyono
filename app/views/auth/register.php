@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
+    <title>Register Form</title>
     <style>
         * {
             box-sizing: border-box;
@@ -23,7 +25,7 @@
             padding: 20px;
         }
 
-        .container {
+        .container1 {
             display: flex;
             flex-wrap: wrap;
             max-width: 1200px;
@@ -39,13 +41,19 @@
             padding: 40px;
         }
 
-        .logo {
+        .logo img {
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
 
         h2 {
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -77,11 +85,12 @@
         }
 
         button {
-            padding: 10px;
+            padding: 15px;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         .btn-custom {
@@ -89,13 +98,14 @@
             color: white;
             border-radius: 10px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
             border: none;
         }
 
         .btn-custom:hover {
             background: #5a3c2e;
             transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Menambahkan bayangan saat hover */
         }
 
         .social-login {
@@ -106,7 +116,7 @@
 
         .illustration {
             flex: 1;
-            background-color: #c49a6c;
+            background: url('/images/bg.jpg') no-repeat center center/cover;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -114,16 +124,29 @@
             align-items: center;
             padding: 40px;
             text-align: center;
+            position: relative;
         }
 
-        .illustration img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
+        .illustration::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay hitam dengan opacity 50% */
+            z-index: 1;
         }
 
         .illustration-text {
+            position: relative;
+            z-index: 2;
             text-align: center;
+        }
+
+        .illustration-text h2, .illustration-text p {
+            margin: 0;
+            padding: 0;
         }
 
         /* Responsive Styles */
@@ -131,11 +154,11 @@
             .container {
                 flex-direction: column;
             }
-
+            
             .illustration {
                 display: none;
             }
-
+            
             .register-form {
                 padding: 20px;
             }
@@ -145,28 +168,36 @@
             .register-form {
                 padding: 15px;
             }
-
+            
             h2 {
                 font-size: 18px;
             }
-
+            
             .options {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
+            
             .options a {
                 margin-top: 10px;
             }
-        }
 
+            button {
+                width: 100%; /* Pastikan tombol memenuhi lebar penuh layar kecil */
+                padding: 15px;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container1">
         <div class="register-form">
             <div class="logo">
-                <img src="img/dartoyo_logo.png" alt="Logo">
+                <a href="/">
+                    <img src="/images/dartoyo_logo.png" alt="Logo">
+                </a>
             </div>
             <h2>Create an Account</h2>
             <p>If you already have an account, you can <a href="/login">Login here</a></p>
@@ -196,13 +227,14 @@
             </form>
         </div>
         <div class="illustration">
-            <img src="https://source.unsplash.com/1600x900/?coffee,cafe" alt="Illustration">
             <div class="illustration-text">
                 <h2>Join Us Now</h2>
                 <p>Be part of our community and enjoy the benefits</p>
             </div>
         </div>
     </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="<?= BASEURL; ?>/js/script.js"></script>
 </body>
 </html>
