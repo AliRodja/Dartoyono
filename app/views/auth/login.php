@@ -3,39 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Custom CSS -->
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            background: url('https://source.unsplash.com/1600x900/?coffee,cafe') no-repeat center center/cover;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', sans-serif;
-        }
-        .card {
-            border-radius: 15px;
-            background: #4b3621;
-            color: white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            min-height: 100vh;
+            background-color: #f0f0f0;
             padding: 20px;
-            max-width: 400px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
             width: 100%;
-        }
-        .form-control {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            background: #d2b48c;
+            overflow: hidden;
+        }
+
+        .login-form {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            color: #fff;
             border: none;
-            color: #4b3621;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .form-control::placeholder {
-            color: #6b4226;
-        }
+
         .btn-custom {
             background: #6f4e37;
             color: white;
@@ -48,63 +96,106 @@
             background: #5a3c2e;
             transform: scale(1.05);
         }
-        .form-label i {
-            margin-right: 5px;
-            color: #c49a6c;
+
+        .social-login {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
         }
-        .card-header {
-            background: transparent;
+
+        .social-login a img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .illustration {
+            flex: 1;
+            background-color: #c49a6c;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
             text-align: center;
-            font-size: 24px;
-            font-weight: 600;
-            color: #f4e1c6;
         }
-        .input-group-text {
-            background: #6f4e37;
-            color: white;
-            border: none;
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
-        a {
-            color: #c49a6c;
+
+        .illustration-text {
+            text-align: center;
         }
-        a:hover {
-            color: #f4e1c6;
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .illustration {
+                display: none;
+            }
+            
+            .login-form {
+                padding: 20px;
+            }
         }
+
+        @media (max-width: 480px) {
+            .login-form {
+                padding: 15px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            .options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .options a {
+                margin-top: 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card shadow-lg p-4">
-            <div class="card-header">
-                <i class="fas fa-coffee"></i>Login
-            </div>
-            <div class="card-body">
-                <form method="POST" action="/login">
-                    <div class="mb-3">
-                        <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            <input type="email" name="email" class="form-control" placeholder="e.g., johndoe@example.com" required>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><i class="fas fa-lock"></i> Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
-                        </div>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-custom"><i class="fas fa-sign-in-alt"></i> Login</button>
-                    </div>
-                    <div class="text-center mt-3">
-                        <p>Don't have an account? <a href="/register">Register here</a></p>
-                    </div>
-                </form>
+    <div class="container">
+        <div class="login-form">
+            <img src="img/dartoyo_logo.png" alt="Logo" class="logo">
+            <h2>Sign in</h2>
+            <p>If you don't have an account register<br>
+               You can <a href="/register">Register here!</a></p>
+            <form method="POST" action="/login">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email address" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                
+                <div class="options">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                
+                <button class="btn-custom" type="submit">Login</button>
+            </form>
+            
+        </div>
+        <div class="illustration">
+            <img src="img/bg.jpg" alt="Illustration">
+            <div class="illustration-text">
+                <h2>Sign in to name</h2>
+                <p>Lorem Ipsum is simply</p>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
