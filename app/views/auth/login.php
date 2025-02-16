@@ -175,10 +175,10 @@
                You can <a href="/register">Register here!</a></p>
             <form method="POST" action="/login">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email address" required>
+                <input type="email" id="email" placeholder="Enter your email address" required name="email">
                 
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
+                <input type="password" id="password" placeholder="Enter your password" required name="password">
                 
                 <div class="options">
                     <label><input type="checkbox"> Remember me</label>
