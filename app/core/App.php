@@ -22,22 +22,20 @@ class App {
         $this->router->addRoute('POST', '/register', 'AuthController', 'register'); // Proses register
         $this->router->addRoute('GET', '/logout', 'AuthController', 'logout'); // Logout
     
-        // Dashboard & Profile (Harus Login)
-        $this->router->addRoute('GET', '/dashboard', 'DashboardController', 'index', ['auth']);
-        $this->router->addRoute('GET', '/profile', 'UserController', 'showProfile', ['auth']);
-        $this->router->addRoute('POST', '/update_profile', 'UserController', 'updateProfile', ['auth']);
+        $this->router->addRoute('GET', '/profile/{id}', 'UserController', 'showProfile', ['auth']);
+        $this->router->addRoute('POST', '/update_profile/{id}', 'UserController', 'updateProfile', ['auth']);
     
         // Post Routes (Harus Login)
+        $this->router->addRoute('GET', '/dashboard', 'DashboardController', 'index', ['auth']);
         $this->router->addRoute('GET', '/create_post', 'PostController', 'showCreateForm', ['auth']);
-        $this->router->addRoute('POST', '/store_post', 'PostController', 'create', ['auth']);
+        $this->router->addRoute('POST', '/create_post', 'PostController', 'create', ['auth']);
         $this->router->addRoute('GET', '/edit_post/{id}', 'PostController', 'editPost', ['auth']);
         $this->router->addRoute('POST', '/update_post/{id}', 'PostController', 'updatePost', ['auth']);
         $this->router->addRoute('GET', '/delete_post/{id}', 'PostController', 'deletePost', ['auth']);
     
         // Public Routes (Tanpa Middleware)
         $this->router->addRoute('GET', '/', 'HomeController', 'index'); // Halaman utama (tanpa login)
-        $this->router->addRoute('GET', '/view_post/{id}', 'PostController', 'viewPost'); // Lihat post tanpa login
+        $this->router->addRoute('GET', '/view_post/{id}', 'HomeController', 'show'); // Lihat post tanpa login
     }
-    
 }
 ?>

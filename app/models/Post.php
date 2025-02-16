@@ -31,9 +31,18 @@ class Post {
     public function getAllPosts() {
         $query = "SELECT * FROM posts ORDER BY created_at DESC";
         $this->db->query($query);
-        return $this->db->resultSet();
+        $result = $this->db->resultSet();
+        return $result;
     }
 
+    public function getPostByUser($user_id){
+        $query = "SELECT * FROM posts WHERE user_id = :user_id";
+        $this->db->query($query);
+        $this->db->bind(':user_id', $user_id);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+    
     // Mendapatkan artikel berdasarkan ID
     public function getPostById($post_id) {
         $query = "SELECT * FROM posts WHERE post_id = :post_id";

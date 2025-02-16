@@ -73,7 +73,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
@@ -89,31 +89,34 @@
                     </li>
                 </ul>
                 <?php
-                if (session_status() === PHP_SESSION_NONE) {
-                    session_start();
-                }
+                    if (session_status() === PHP_SESSION_NONE) {
+                        session_start();
+                    }
 
-                if (!empty($_SESSION['user']['user_id'])) {
-                    $username = $_SESSION['user']['full_name'];
-                    $email = $_SESSION['user']['username'];
-                ?>
-                    <div class="dropdown">
-                        <button class="btn btn-sign-in dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                            <li><span class="dropdown-item-text fw-bold"><?= htmlspecialchars($username); ?></span></li>
-                            <li><span class="dropdown-item-text text-muted"><?= htmlspecialchars($email); ?></span></li>
-                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
-                        </ul>
-                    </div>
-                <?php
-                } else {
-                    echo '<a href="/login"><button class="btn btn-sign-in">Sign in</button></a>';
-                }
-                ?>
+                    if (!empty($_SESSION['user']['user_id'])) {
+                        $username = $_SESSION['user']['full_name'];
+                        $email = $_SESSION['user']['username'];
+                        $role = $_SESSION['user']['role'];
+                    ?>
+                        <div class="dropdown">
+                            <button class="btn btn-sign-in dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><span class="dropdown-item-text fw-bold"><?= htmlspecialchars($username); ?></span></li>
+                                <li><a class="dropdown-item text-primary" href="/profile/<?php echo $_SESSION['user']['user_id']; ?>">Profile</a></li>
+                                <?php if ($role === 'writer') : ?>
+                                    <li><a class="dropdown-item text-primary" href="/dashboard">Dashboard</a></li>
+                                <?php endif; ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    <?php
+                    } else {
+                        echo '<a href="/login"><button class="btn btn-sign-in">Sign in</button></a>';
+                    }
+                    ?>
             </div>
         </div>
     </nav>

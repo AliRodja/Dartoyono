@@ -76,6 +76,7 @@ class Database {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     
+    
 
     // Mengembalikan jumlah baris yang dipengaruhi query
     public function rowCount() {

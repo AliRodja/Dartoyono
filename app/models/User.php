@@ -40,6 +40,35 @@ class User {
         }
     }
 
+    public function update($id, $data) {
+        $query = "UPDATE users SET 
+                    username = :username, 
+                    email = :email, 
+                    full_name = :full_name, 
+                    birth_date = :birth_date, 
+                    gender = :gender, 
+                    profile_photo = :profile_photo, 
+                    request_status = :request_status 
+                  WHERE user_id = :user_id";
+
+        $this->db->query($query);
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':full_name', $data['full_name']);
+        $this->db->bind(':birth_date', $data['birth_date']);
+        $this->db->bind(':gender', $data['gender']);
+        $this->db->bind(':profile_photo', $data['profile_photo']);
+        $this->db->bind(':request_status', $data['request_status']);
+        $this->db->bind(':user_id', $id);
+
+        return $this->db->execute();
+        if (!$this->db->execute()) {
+            print_r($this->db->errorInfo()); // Debug error SQL
+            return false;
+        }
+        
+    }
+
     // Fungsi untuk menemukan user berdasarkan email
     public function findUserByEmail($email) {
         $query = "SELECT * FROM users WHERE email = :email LIMIT 1";
